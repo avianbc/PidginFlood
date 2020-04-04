@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -46,14 +46,11 @@ namespace aim
             {
                 foreach (char c in s)
                 {
-                    //IntPtr val = new IntPtr(char.ToUpper(c));]
                     IntPtr val = new IntPtr(VkKeyScan(c));
 
-                    //PostMessage(proc[0].MainWindowHandle, WM_KEYDOWN, new IntPtr(VK_SHIFT), new IntPtr(0));
                     PostMessage(proc[0].MainWindowHandle, WM_KEYDOWN, val, new IntPtr(0));
                     PostMessage(proc[0].MainWindowHandle, WM_CHAR, val, new IntPtr(0));
                     PostMessage(proc[0].MainWindowHandle, WM_KEYUP, val, new IntPtr(0));
-                    //PostMessage(proc[0].MainWindowHandle, WM_KEYUP, new IntPtr(VK_SHIFT), new IntPtr(0));
                 }
 
                 PostMessage(proc[0].MainWindowHandle, WM_KEYDOWN, new IntPtr(VK_RETURN), new IntPtr(0));
