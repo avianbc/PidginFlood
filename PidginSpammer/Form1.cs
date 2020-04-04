@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -17,11 +17,11 @@ namespace aim
         [DllImport("user32.dll")]
         static extern short VkKeyScan(char ch);
 
-        public const Int32 WM_CHAR = 0x0102;
-        public const Int32 WM_KEYDOWN = 0x0100;
-        public const Int32 WM_KEYUP = 0x0101;
-        public const Int32 VK_RETURN = 0x0D;
-        public const Int32 VK_SHIFT = 0x10;
+        public const int WM_CHAR = 0x0102;
+        public const int WM_KEYDOWN = 0x0100;
+        public const int WM_KEYUP = 0x0101;
+        public const int VK_RETURN = 0x0D;
+        public const int VK_SHIFT = 0x10;
         public const uint MAPVK_VK_TO_CHAR = 0x02;
         
         public Form1()
@@ -33,9 +33,9 @@ namespace aim
         {
             Process[] proc = Process.GetProcessesByName("pidgin");
 
-            if (proc[0] == null || proc.Length == 0)
+            if (proc.Length == 0 || proc[0] == null)
             {
-                MessageBox.Show("Process not found.", "Aborting");
+                MessageBox.Show("Process not found. Is pidgin running?", "Aborting");
                 return;
             }
 
